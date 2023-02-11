@@ -1,0 +1,31 @@
+{% extends 'polls/main.html' %}
+
+{% block content %}
+
+<a href="{% url 'questions' %}">&#8592 Go Back</a>
+
+<form action="{% url 'vote' question.id %}" method="POST">
+  {% csrf_token %}
+
+  <fieldset>
+    <legend>{{ question }}</legend>
+    <ul style="list-style: none;">
+      {% for choice in question.choice_set.all %}
+      <li>
+        <input type="radio" name="choice" value="{{ choice.id }}" 
+               id="choice{{ forloop.counter }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+      </li>
+      {% endfor %}
+    </ul>
+  </fieldset>
+  <input class="submit-button" type="submit" value="Submit Vote">
+</form>
+
+{% endblock content %}
+
+<!-- value is the actual value sent to server when submitting -->
+<!-- name must be the same for all radio buttons -->
+<!-- name is also how views functions reference input tags -->
+<!-- the input 'id' and label 'for' are connected -->
+

@@ -1,0 +1,29 @@
+{% extends 'polls/main.html' %}
+
+{% block content %}
+
+<h3>Polling App</h3>
+
+<fieldset>
+  <legend><u>Today's Polling Questions:</u></legend>
+  {% if question_list %}
+    <ol>
+      {% for question in question_list %}
+      <li>
+        <p>
+          <a href="{% url 'choices' question.id %}">
+            {{ question }}
+          </a>
+        </p>
+      </li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p>
+      Sorry, no questions today!
+      Come back another time.
+    </p>
+  {% endif %}
+</fieldset>
+
+{% endblock content %}

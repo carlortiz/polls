@@ -1,0 +1,20 @@
+{% extends 'polls/main.html' %}
+
+{% block content %}
+
+<a href="{% url 'questions' %}">&#8592 Return Home</a>
+
+<fieldset>
+  <legend>Here are the results!</legend>
+  <ul>
+    {% for choice in question.choice_set.all %}
+    <li>
+      {{ choice.choice_text }} : {{ choice.votes }} vote{{ choice.votes|pluralize }}
+    </li>
+    {% endfor %}
+  </ul>
+</fieldset>
+
+{% endblock content %}
+
+
