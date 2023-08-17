@@ -1,7 +1,5 @@
 # Polls
 
-Credit to Django tutorials documentation. This is a clone. 
-
 A web app built with Django to create poll questions and survey users.
 
 <p align="center"> 
